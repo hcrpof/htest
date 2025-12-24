@@ -3,6 +3,27 @@ languageCode = 'ru-ru'
 title = 'Тестовый сайт Hugo'
 theme = 'ananke'
 
+[params]
+  mainSections = ["blog"]
+
+[menu]
+  [[menu.main]]
+    name = "Блог"
+    url = "/blog"
+    weight = 1
+  [[menu.main]]
+    name = "Проекты"
+    url = "/projects"
+    weight = 2
+  [[menu.main]]
+    name = "Портфолио"
+    url = "/portfolio"
+    weight = 3
+  [[menu.main]]
+    name = "Контакты"
+    url = "/contacts"
+    weight = 4
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
