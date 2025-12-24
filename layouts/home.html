@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <div class="center mw8 pa3">
+    {{ $mainSections := site.Params.mainSections | compare.Default (collections.Slice "post") }}
+    {{ $section := collections.Where $.Site.RegularPages "Section" "in" $mainSections }}
+    {{ $n_posts := $.Param "recent_posts_number" | compare.Default 3 }}
+
+    <section>
+      {{ range (collections.First $n_posts $section) }}
+        <h2 class="f4 mb3">
+          <a href="{{ .RelPermalink }}" class="link black dim">{{ .Title }}</a>
+        </h2>
+      {{ end }}
+    </section>
+
+    {{ if compare.Ge (len $section) (math.Add $n_posts 1) }}
+      <section class="mt4">
+        <h3 class="f5">{{ lang.Translate "more" }}</h3>
+        {{ range (collections.First 4 (collections.After $n_posts $section)) }}
+          <h4 class="f6 mb2">
+            <a href="{{ .RelPermalink }}" class="link black dim">{{ .Title }}</a>
+          </h4>
+        {{ end }}
+      </section>
+    {{ end }}
+  </div>
+{{ end }}

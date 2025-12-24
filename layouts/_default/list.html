@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <article class="center mw8 pa3">
+    <section>
+      {{ range .Paginator.Pages }}
+        <h2 class="f4 mb3">
+          <a href="{{ .RelPermalink }}" class="link black dim">{{ .Title }}</a>
+        </h2>
+      {{ end }}
+    </section>
+
+    {{ partial "pagination.html" . }}
+  </article>
+{{ end }}
